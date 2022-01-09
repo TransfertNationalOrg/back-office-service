@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +19,7 @@ public class ParametreController {
     final ParametreConverter parametreConverter;
 
     @PostMapping("/")
-    public ResponseEntity<?> save(@Valid @RequestBody ParametreDTO parametreDTO) throws Exception {
+    public ResponseEntity<?> save(@RequestBody ParametreDTO parametreDTO) throws Exception {
         if (parametreDTO == null)
             return ResponseEntity.badRequest().body("The provided parametre is not valid");
         return ResponseEntity
@@ -29,7 +28,7 @@ public class ParametreController {
     }
 
     @PutMapping("/")
-    public ResponseEntity<?> update(@Valid @RequestBody ParametreDTO parametreDTO) throws Exception {
+    public ResponseEntity<?> update(@RequestBody ParametreDTO parametreDTO) throws Exception {
         if (parametreDTO == null)
             return ResponseEntity.badRequest().body("The provided parametre is not valid");
         return ResponseEntity
