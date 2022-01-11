@@ -7,15 +7,15 @@ import java.util.Date;
 @Data
 public class ParametreDTO {
 
-    private Long id;
-    private double maxSomAgence=20000;
-    private double maxSomWallet=2000;
-    private double maxRetraitGAB=2000;
-    private int maxnbrTranfAgence=50;
-    private int delaiExpiration=15;
-    private int delaiDesherence=10;
-    private double commision=0.2;
-    private double commissionNotification=5;
-    private Date heureBatchBlocage;
-    private Date heureBatchDesherence;
+    protected Long id;
+    protected double maxSomAgence=20000;
+    protected double maxSomWallet=2000;
+    protected double maxRetraitGAB=2000;
+    protected int maxnbrTranfAgence=50;
+    protected int delaiExpiration=15;
+    protected int delaiDesherence=10;
+    protected double commision=0.2;
+    protected double commissionNotification=5;
+    protected Date heureBatchBlocage;
+    protected Date heureBatchDesherence;
 }

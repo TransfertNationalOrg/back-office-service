@@ -17,26 +17,26 @@ import java.util.Date;
 public class Agent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    protected Long id;
 
-    private TITRE titre;
-    private String prenom;
-    private String nom;
-    private IDENTITE identite;
-    private PAYS pays;
-    private Long numIdentite;
-    private Date expiration;
-    private Date naissance;
-    private String profession;
-    private PAYS nationalite;
-    private String adressePays;
-    private String adresseLegale;
-    private String ville;
-    private Long gsm;
-    private String email;
+    protected TITRE titre;
+    protected String prenom;
+    protected String nom;
+    protected IDENTITE identite;
+    protected PAYS pays;
+    protected Long numIdentite;
+    protected Date expiration;
+    protected Date naissance;
+    protected String profession;
+    protected PAYS nationalite;
+    protected String adressePays;
+    protected String adresseLegale;
+    protected String ville;
+    protected Long gsm;
+    protected String email;
 
     //attributs propres à un agent
-    private String matricule;
-    private Role role;
+    protected String matricule;
+    protected Role role;
 
 }
