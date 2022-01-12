@@ -15,8 +15,8 @@ import java.util.List;
 @Data
 public class AgentController {
 
-    final AgentService agentService;
-    final AgentConverter agentConverter;
+    private final AgentService agentService;
+    private final AgentConverter agentConverter;
 
     @PostMapping("/")
     public ResponseEntity<?> save( @RequestBody AgentDTO agentDTO) throws Exception {

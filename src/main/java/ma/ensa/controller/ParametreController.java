@@ -15,8 +15,8 @@ import java.util.List;
 @Data
 public class ParametreController {
     
-    final ParametreService parametreService;
-    final ParametreConverter parametreConverter;
+    private final ParametreService parametreService;
+    private final ParametreConverter parametreConverter;
 
     @PostMapping("/")
     public ResponseEntity<?> save(@RequestBody ParametreDTO parametreDTO) throws Exception {
