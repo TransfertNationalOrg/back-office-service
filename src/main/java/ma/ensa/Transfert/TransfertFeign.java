@@ -12,5 +12,11 @@ public interface TransfertFeign {
     List<TransfertDTO> findAll();
 
     @GetMapping("/transfert/agent/{idAgent}")
-    List<TransfertDTO> getTransfertsByAgent(@PathVariable("idAgent") Long idClient);
+    List<TransfertDTO> getTransfertsByAgent(@PathVariable("idAgent") Long idAgent);
+
+    @GetMapping("/transfert/client/{idAgent}")
+    List<TransfertDTO> getTransfertsByClient(@PathVariable("idClient") Long idClient);
+
+    @GetMapping("/transfert/beneficiaire/{idBeneficiaire}")
+    List<TransfertDTO> getTransfertsByBeneficiaire(@PathVariable("idBeneficiaire") Long idBeneficiaire);
 }
