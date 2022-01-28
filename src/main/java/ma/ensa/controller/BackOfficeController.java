@@ -5,7 +5,9 @@ import ma.ensa.Transfert.TransfertDTO;
 import ma.ensa.Transfert.TransfertFeign;
 import ma.ensa.agent.AgentDTO;
 import ma.ensa.agent.AgentFeign;
+import ma.ensa.beneficiaire.BeneficiaireDTO;
 import ma.ensa.beneficiaire.BeneficiaireFeign;
+import ma.ensa.client.ClientDTO;
 import ma.ensa.client.ClientFeign;
 import org.springframework.http.*;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -51,8 +53,60 @@ public class BackOfficeController {
 
     //Delete an agent
     @DeleteMapping("/agent/{id}")
-    ResponseEntity<?> delete(@PathVariable Long id){
+    ResponseEntity<?> deleteAgent(@PathVariable Long id){
         return agentFeign.delete(id);
+    }
+
+    //FROM CLIENT-SERVICE
+
+    //Get all clients
+    @GetMapping("/client")
+    List<ClientDTO> findAllClient(){
+        return clientFeign.findAll();
+    }
+
+    //Add a client
+    @PostMapping("/client")
+    ResponseEntity<?> save(@RequestBody ClientDTO clientDTO){
+        return clientFeign.save(clientDTO);
+    }
+
+    //Update a client
+    @PutMapping("/client")
+    ResponseEntity<?> update(@RequestBody ClientDTO clientDTO){
+        return clientFeign.update(clientDTO);
+    }
+
+    //Delete a client
+    @DeleteMapping("/client/{id}")
+    ResponseEntity<?> deleteClient(@PathVariable Long id){
+        return clientFeign.delete(id);
+    }
+
+    //FROM BENEFICIAIRE-SERVICE
+
+    //Get all beneficiaires
+    @GetMapping("/beneficiaire")
+    List<BeneficiaireDTO> findAllBeneficiaire(){
+        return beneficiaireFeign.findAll();
+    }
+
+    //Add a beneficiaire
+    @PostMapping("/beneficiaire")
+    ResponseEntity<?> save(@RequestBody BeneficiaireDTO beneficiaireDTO){
+        return beneficiaireFeign.save(beneficiaireDTO);
+    }
+
+    //Update a beneficiaire
+    @PutMapping("/beneficiaire")
+    ResponseEntity<?> update(@RequestBody BeneficiaireDTO beneficiaireDTO){
+        return beneficiaireFeign.update(beneficiaireDTO);
+    }
+
+    //Delete a beneficiaire
+    @DeleteMapping("/beneficiaire/{id}")
+    ResponseEntity<?> deleteBeneficiaire(@PathVariable Long id){
+        return beneficiaireFeign.delete(id);
     }
 
     //Get all transferts
@@ -67,4 +121,15 @@ public class BackOfficeController {
         return transfertFeign.getTransfertsByAgent(id);
     }
 
+    //Get all transferts by client from transfert-service
+    @GetMapping("/allTransferts/{idClient}")
+    public List<TransfertDTO> getAllTransfertsByClient(@PathVariable("id") Long id){
+        return transfertFeign.getTransfertsByClient(id);
+    }
+
+    //Get all transferts by beneficiare from transfert-service
+    @GetMapping("/allTransferts/{idBeneficiaire}")
+    public List<TransfertDTO> getAllTransfertsByBeneficiaire(@PathVariable("id") Long id){
+        return transfertFeign.getTransfertsByBeneficiaire(id);
+    }
 }
