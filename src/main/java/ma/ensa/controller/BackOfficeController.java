@@ -9,6 +9,8 @@ import ma.ensa.beneficiaire.BeneficiaireDTO;
 import ma.ensa.beneficiaire.BeneficiaireFeign;
 import ma.ensa.client.ClientDTO;
 import ma.ensa.client.ClientFeign;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.http.*;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -109,10 +111,30 @@ public class BackOfficeController {
         return beneficiaireFeign.delete(id);
     }
 
+    //FROM TRANSFERT-SERVICE
+
     //Get all transferts
     @GetMapping("/transfert")
     List<TransfertDTO> findAllTransferts(){
         return transfertFeign.findAll();
+    }
+
+    //Add a transfert
+    @PostMapping("/transfert")
+    ResponseEntity<?> save(@RequestBody TransfertDTO transfertDTO){
+        return transfertFeign.save(transfertDTO);
+    }
+
+    //Update a transfert
+    @PutMapping("/transfert")
+    ResponseEntity<?> update(@RequestBody TransfertDTO transfertDTO){
+        return transfertFeign.update(transfertDTO);
+    }
+
+    //Delete a transfert
+    @DeleteMapping("/transfert/{id}")
+    ResponseEntity<?> delete(@PathVariable Long id){
+        return transfertFeign.delete(id);
     }
 
     //Get all transferts by agent from transfert-service
