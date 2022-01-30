@@ -11,8 +11,23 @@ public interface TransfertFeign {
     @GetMapping("/transfert/")
     List<TransfertDTO> findAll();
 
-    @PostMapping("/transfert/")
+    @PostMapping("/transfert/agent")
     ResponseEntity<?> save(@RequestBody TransfertDTO transfertDTO);
+
+    @PostMapping("/transfert/wallet")
+    ResponseEntity<?> saveFromWallet(@RequestBody TransfertDTO transfertDTO);
+
+    //Bloquer un transfert
+    @PutMapping("/transfert/bloquer/{id}")
+    public ResponseEntity<?> bloquer(@PathVariable Long id);
+
+    //Débloquer un transfert
+    @PutMapping("/transfert/debloquer/{id}")
+    public ResponseEntity<?> debloquer(@PathVariable Long id);
+
+    //Extourner un transfert
+    @PutMapping("/transfert/extourner/{id}")
+    public ResponseEntity<?> extourner(@PathVariable Long id);
 
     @PutMapping("/transfert/")
     ResponseEntity<?> update(@RequestBody TransfertDTO transfertDTO);

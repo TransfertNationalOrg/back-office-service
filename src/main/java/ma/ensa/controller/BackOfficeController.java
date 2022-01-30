@@ -119,10 +119,34 @@ public class BackOfficeController {
         return transfertFeign.findAll();
     }
 
-    //Add a transfert
-    @PostMapping("/transfert")
+    //Add a transfert via console
+    @PostMapping("/transfert/agent")
     ResponseEntity<?> save(@RequestBody TransfertDTO transfertDTO){
         return transfertFeign.save(transfertDTO);
+    }
+
+    //Add a transfert via wallet
+    @PostMapping("/transfert/wallet")
+    ResponseEntity<?> saveFromWallet(@RequestBody TransfertDTO transfertDTO){
+        return transfertFeign.save(transfertDTO);
+    }
+
+    //Bloquer un transfert
+    @PutMapping("/transfert/bloquer/{id}")
+    ResponseEntity<?> bloquer(@PathVariable Long id){
+        return transfertFeign.bloquer(id);
+    }
+
+    //Débloquer un transfert
+    @PutMapping("/transfert/debloquer/{id}")
+    ResponseEntity<?> debloquer(@PathVariable Long id){
+        return transfertFeign.debloquer(id);
+    }
+
+    //Extourner un transfert
+    @PutMapping("/transfert/extourner/{id}")
+    ResponseEntity<?> extourner(@PathVariable Long id){
+        return transfertFeign.extourner(id);
     }
 
     //Update a transfert
@@ -154,4 +178,6 @@ public class BackOfficeController {
     public List<TransfertDTO> getAllTransfertsByBeneficiaire(@PathVariable("id") Long id){
         return transfertFeign.getTransfertsByBeneficiaire(id);
     }
+
+
 }
