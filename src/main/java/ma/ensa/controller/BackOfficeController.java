@@ -9,17 +9,8 @@ import ma.ensa.beneficiaire.BeneficiaireDTO;
 import ma.ensa.beneficiaire.BeneficiaireFeign;
 import ma.ensa.client.ClientDTO;
 import ma.ensa.client.ClientFeign;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.http.*;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @RestController

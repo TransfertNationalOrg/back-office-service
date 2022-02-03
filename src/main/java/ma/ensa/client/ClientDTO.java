@@ -27,7 +27,5 @@ public class ClientDTO {
     protected String ville;
     protected Long gsm;
     protected String email;
-
-
-    protected Set<Long> transfertsIds;
+    protected Long idClient;
 }
